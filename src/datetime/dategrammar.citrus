@@ -1,0 +1,224 @@
+grammar DateGrammar
+
+
+  # Aux
+
+  rule unit
+    'Day' | 'Week' | 'Month' | 'Year'
+  end
+
+  rule space
+    [ \s\t]*
+  end
+
+  rule num
+    [0-9]+ { to_s.to_i }
+  end
+
+  rule operator
+    '+' | '-'
+  end
+
+
+  # Days of the week
+
+  rule weekday
+
+    (mon:'Monday' | tue:'Tuesday' | wed:'Wednesday' | thu:'Thursday' | fri:'Friday' | sat:'Saturday' | sun:'Sunday') {
+
+      t = Date.today.wday
+      w = if    not capture(:mon).nil? then 1
+          elsif not capture(:tue).nil? then 2
+          elsif not capture(:wed).nil? then 3
+          elsif not capture(:thu).nil? then 4
+          elsif not capture(:fri).nil? then 5
+          elsif not capture(:sat).nil? then 6
+          elsif not capture(:sun).nil? then 0
+          end
+
+      if    t < w then { :date => Date.today + (6 - (w-t)) }
+      elsif t > w then { :date => Date.today + (t-w) }
+      else             { :date => Date.today + 7 }
+      end
+    }
+  end
+
+  rule weekend
+
+    'Weekend' {
+        t = Date.today
+        w = t.wday
+        if    w == 5 then { :date => t,         :until => t + 2 }
+        elsif w == 6 then { :date => t + 6,     :until => t + 8 }
+        elsif w == 0 then { :date => t + 5,     :until => t + 7 }
+        else              { :date => t + (5-w), :until => t + ((5-w) + 2) }
+        end
+    }
+  end
+
+
+  # Holidays
+
+  rule holiday
+
+      'Christmas' { { :date => Date.new(Date.today.year,12,24), :until => Date.new(Date.today.year,12,26) } }
+    | 'Easter'    {
+        y = Date.today.year
+        case y
+          when 2016 then { :date => Date.new(y,3,24), :until => Date.new(y,3,28) }
+          when 2017 then { :date => Date.new(y,4,14), :until => Date.new(y,4,18) }
+        end
+        }
+    | 'Pentecost' {
+        y = Date.today.year
+        case y
+          when 2016 then { :date => Date.new(y,5,13), :until => Date.new(y,5,17) }
+          when 2017 then { :date => Date.new(y,6,2),  :until => Date.new(y,6,4)  }
+        end
+    }
+  end
+
+
+  # All date expressions
+
+  rule date
+
+    # today
+
+    'today' { { :date => Date.today } }
+
+    # weekdays and holidays
+
+    | weekday
+    | weekend
+    | holiday
+
+    # 2016-02-02
+
+    | (year:num '-' month:num '-' day:num) { { :date => Date.new(capture(:year).value, capture(:month).value, capture(:day).value) } }
+
+    # year-02-02
+
+    | ('year' '-' month:num '-' day:num) { { :date => Date.new(Date.today.year, capture(:month).value, capture(:day).value) } }
+
+    # < today
+
+    | ('<' space d:date) { { :date => Date.today, :until => capture(:d).value[:date] } }
+
+    # > today
+
+    | ('>' space d:date) { { :date => capture(:d).value[:date], :duration => :infinite } }
+
+    # ~ today
+
+    | ('~' space d:date) { d = capture(:d).value[:date]; { :date => d - 3, :until => d + 3 } }
+
+    # shift today + 1 Day
+
+    | ('shift' space date:date space op:operator space num:num space unit:unit) {
+
+        d = capture(:date).value[:date]
+        case capture(:unit)
+        when 'Day'
+          case capture(:op).to_s
+            when '+' then { :date => d + capture(:num).value }
+            when '-' then { :date => d - capture(:num).value }
+          end
+        when 'Week'
+          case capture(:op).to_s
+            when '+' then { :date => d + 7*capture(:num).value }
+            when '-' then { :date => d - 7*capture(:num).value }
+          end
+        when 'Month'
+          expand = num.value > 1
+          case capture(:op).to_s
+          when '+'
+              if expand
+                { :date => Date.new(d.year,d.mon + num.value,1), :until => Date.new(d.year,d.mon + num.value,-1) }
+              else
+                { :date => Date.new(d.year,d.mon + num.value,d.day-3), :until => Date.new(d.year,d.mon + num.value,d.day+3) }
+              end
+          when '-'
+              if expand
+                { :date => Date.new(d.year,d.mon - num.value,1), :until => Date.new(d.year,d.mon - num.value,-1) }
+              else
+                { :date => Date.new(d.year,d.mon - num.value,d.day-3), :until => Date.new(d.year,d.mon - num.value,d.day+3) }
+              end
+          end
+        when 'Year'
+          y = case capture(:op).to_s when '+' then d.year+1 when '-' then d.year-1 end
+          { :date => Date.new(y,d.mon,1), :until => Date.new(y,d.mon,-1) }
+        end
+    }
+
+    # this(Week)
+
+    | ('this' space '(' space unit:unit space ')') {
+
+        t = Date.today
+        case capture(:unit).to_s
+          when 'Day'
+            { :date => t }
+          when 'Week'
+            { :date => t, :until => t + (7-t.wday) }
+          when 'Month'
+            { :date => t, :until => Date.new(t.year,t.mon,-1) }
+          when 'Year'
+            { :date => t, :until => Date.new(t.year,12,31) }
+          end
+    }
+
+    # next(Week)
+
+    | ('next' space '(' space unit:unit space ')') {
+
+        t = Date.today
+        case capture(:unit).to_s
+          when 'Day'
+            { :date => t.next }
+          when 'Week'
+            w = t.wday
+            if w == 0 then { :date => t.next,    :until => t + 7 }
+            else           { :date => t + (8-w), :until => t + (8-w)+7 }
+            end
+          when 'Month'
+            { :date => Date.new(t.year,t.mon+1,1), :until => Date.new(t.year,t.mon+1,-1) }
+          when 'Year'
+            { :date => Date.new(t.year+1,1,1), :until => Date.new(t.year,12,31) }
+          end
+    }
+
+    # this(Friday)
+
+    | ('this' space '(' space w:weekday space ')') { capture(:w).value }
+
+    # next(Friday)
+
+    | ('next' space '(' space w:weekday space ')') {
+      t = Date.today
+      w = case capture(:w).to_s
+            when 'Sunday'    then 0
+            when 'Monday'    then 1
+            when 'Tuesday'   then 2
+            when 'Wednesday' then 3
+            when 'Thursday'  then 4
+            when 'Friday'    then 5
+            when 'Saturday'  then 6
+          end
+      { :date => t + ((8-t.wday)+w) }
+    }
+
+    # this(Weekend)
+
+    | ('this' space '(' space w:weekend space ')') { capture(:w).value }
+
+    # next(Weekend)
+
+    | ('next' space '(' space w:weekend space ')') {
+      d = capture(:w).value
+      { :date => d[:date] + 7, :until => d[:until] + 7 }
+    }
+
+  end
+
+end
