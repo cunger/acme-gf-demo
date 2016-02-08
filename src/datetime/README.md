@@ -3,7 +3,6 @@ Available via GET request to `http://52.29.222.38/resolve/<date>`.
 *Examples:*
 
 * today: [http://52.29.222.38/resolve/today](http://52.29.222.38/resolve/today)
-* next week: [http://52.29.222.38/resolve/next(Week)](http://52.29.222.38/resolve/next(Week)
 * around Easter: [http://52.29.222.38/resolve/~Easter](http://52.29.222.38/resolve/~Easter)
 * before next Friday: [http://52.29.222.38/resolve/%3Cnext(Friday)](http://52.29.222.38/resolve/%3Cnext(Friday))
 
