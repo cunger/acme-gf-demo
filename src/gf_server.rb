@@ -10,8 +10,8 @@ class GFServer
 
   def initialize(address="http://localhost:41296/grammars/", grammar="Application")
 
-      `pgrep -f 'gf -server' | xargs kill` # Do better!
-      @pid = Process.spawn( "gf -server", [:out,:err] => [".gf.log","w"])
+      `pgrep -f "gf -server" | xargs kill` # Do better!
+      @pid = Process.spawn("~/.cabal/bin/gf -server", [:out,:err] => [".gf.log","w"])
       sleep 4 # Do better!
 
       @grammar = grammar
