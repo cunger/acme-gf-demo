@@ -10,7 +10,7 @@ gf = GFServer.new
 
 puts "Starting REST service..."
 
-set :port, 80
+set :bind => "0.0.0.0", :port => 80
 
 get "/" do
   "<b>Example requests:</b> <p><ul><li><pre>/parse/moinsen</pre></li> <li><pre>/parse/Ich%20will%20heute%20nach%20Rom%20fliegen</pre></li></ul></p>"
