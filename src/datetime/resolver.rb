@@ -6,12 +6,7 @@ Citrus.load "#{File.dirname(__FILE__)}/dategrammar"
 
 def resolve_date(string)
 
-    puts '------ ' + string + ' -------'
-
     date = DateGrammar.parse(string, :root => :date).value
-
-    puts date
-    puts "\n"
 
     # TODO the following is too coarse
 
@@ -28,6 +23,5 @@ def resolve_date(string)
     return string
 
     rescue Citrus::ParseError => e
-      puts 'no parse'
       return string
 end
