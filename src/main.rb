@@ -25,5 +25,5 @@ get "/resolve/:date" do |date|
 end
 
 get "/test/:language" do |language|
-  File.open("../test/benchmarks/flights_"+language+".md","r").read
+  File.open("../test/benchmarks/flights_"+language+".html","r").read
 end
