@@ -47,5 +47,5 @@ abstract DateTime = Core ** {
 
      Y2015, Y2016, Y2017 : Year;
 
-     N1, N2, N3, N4, N5, N6, N7, N8, N9 : Number;
+     N1, N2, N3, N4, N5, N6, N7, N8, N9, N10 : Number;
 }

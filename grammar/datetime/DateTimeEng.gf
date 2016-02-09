@@ -107,15 +107,16 @@ concrete DateTimeEng of DateTime = CoreEng ** open SyntaxEng, ParadigmsEng, Symb
      Y2016 = ss "2016" | ss "16";
      Y2017 = ss "2017" | ss "17";
 
-     N1  = mkCard "1";
-     N2  = mkCard "2";
-     N3  = mkCard "3";
-     N4  = mkCard "4";
-     N5  = mkCard "5";
-     N6  = mkCard "6";
-     N7  = mkCard "7";
-     N8  = mkCard "8";
-     N9  = mkCard "9";
+     N1  = mkCard "1" | mkCard (mkDigits "1");
+     N2  = mkCard "2" | mkCard (mkDigits "2");
+     N3  = mkCard "3" | mkCard (mkDigits "3");
+     N4  = mkCard "4" | mkCard (mkDigits "4");
+     N5  = mkCard "5" | mkCard (mkDigits "5");
+     N6  = mkCard "6" | mkCard (mkDigits "6");
+     N7  = mkCard "7" | mkCard (mkDigits "7");
+     N8  = mkCard "8" | mkCard (mkDigits "8");
+     N9  = mkCard "9" | mkCard (mkDigits "9");
+     N10 = mkCard "10" | mkCard (mkDigits "10");
 
 
      oper ss : Str -> { s : Str } = \ s -> { s = s };
