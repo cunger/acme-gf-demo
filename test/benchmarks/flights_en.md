@@ -1,5 +1,5 @@
-Testsuite: testsuites/flights_en.txt
-Created:   2016-02-07
+Testsuite: benchmarks/flights_en.txt
+Created:   2016-02-09
 
 
 * I&#39;d like to fly to Munich.
@@ -23,7 +23,7 @@ Created:   2016-02-07
 
 * next week
 
-    {"date"=>["2016-02-08", "2016-02-14"]}
+    {"date"=>["2016-02-15", "2016-02-22"]}
 
 * a flight to Rome please
 

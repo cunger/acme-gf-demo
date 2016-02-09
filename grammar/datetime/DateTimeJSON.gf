@@ -3,6 +3,7 @@ concrete DateTimeJSON of DateTime = CoreJSON ** open Prelude, Numeral in {
 lincat
 
      TemporalUnit = Str;
+     Number       = Str;
 
      Weekday      = Str;
 
@@ -22,6 +23,8 @@ lincat
      Sunday    = "Sunday";
      Weekend   = "Weekend";
 
+     weekday w = w;
+
      Christmas = "year-12-24";
      Easter    = "Easter";
 
@@ -31,8 +34,8 @@ lincat
      Months    = "Month";
      Years     = "Year";
 
-     plus  num unit = set "date" (quotes ("shift today +" ++ num.s ++ unit));
-     minus num unit = set "date" (quotes ("shift today -" ++ num.s ++ unit));
+     plus  num unit = set "date" (quotes ("shift today +" ++ num ++ unit));
+     minus num unit = set "date" (quotes ("shift today -" ++ num ++ unit));
 
      next_unit unit = set "date" (quotes ("next(" ++ unit ++ ")"));
      next      day  = set "date" (quotes ("next(" ++ day  ++ ")"));
@@ -102,4 +105,14 @@ lincat
      Y2015 = "2015";
      Y2016 = "2016";
      Y2017 = "2017";
+
+     N1  = "1";
+     N2  = "2";
+     N3  = "3";
+     N4  = "4";
+     N5  = "5";
+     N6  = "6";
+     N7  = "7";
+     N8  = "8";
+     N9  = "9";
 }

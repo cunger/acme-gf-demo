@@ -1,5 +1,5 @@
-Testsuite: testsuites/flights_whatsapp.txt
-Created:   2016-02-07
+Testsuite: benchmarks/flights_whatsapp.txt
+Created:   2016-02-09
 
 
 * Moinsen,

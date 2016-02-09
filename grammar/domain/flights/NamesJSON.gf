@@ -127,5 +127,6 @@ concrete NamesJSON of Names = CoreJSON ** {
      LEY = string "LEY";
      MST = string "MST";
      RTM = string "RTM";
-
+     JFK = string "JFK";
+     LGA = string "LGA";
 }

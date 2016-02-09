@@ -3,6 +3,7 @@ concrete DateTimeEng of DateTime = CoreEng ** open SyntaxEng, ParadigmsEng, Symb
   lincat
 
      TemporalUnit = CN;
+     Number       = Card;
 
      Weekday      = CN;
 
@@ -21,6 +22,8 @@ concrete DateTimeEng of DateTime = CoreEng ** open SyntaxEng, ParadigmsEng, Symb
      Saturday  = mkCN (mkN "saturday") | mkCN (mkN "sat");
      Sunday    = mkCN (mkN "sunday") | mkCN (mkN "sun");
      Weekend   = mkCN (mkN "weekend");
+
+     weekday w = mkNP w;
 
      Christmas = mkNP (mkPN "christmas") | mkNP (mkPN "xmas");
      Easter    = mkNP (mkPN "easter");
@@ -103,6 +106,17 @@ concrete DateTimeEng of DateTime = CoreEng ** open SyntaxEng, ParadigmsEng, Symb
      Y2015 = ss "2015" | ss "15";
      Y2016 = ss "2016" | ss "16";
      Y2017 = ss "2017" | ss "17";
+
+     N1  = mkCard "1";
+     N2  = mkCard "2";
+     N3  = mkCard "3";
+     N4  = mkCard "4";
+     N5  = mkCard "5";
+     N6  = mkCard "6";
+     N7  = mkCard "7";
+     N8  = mkCard "8";
+     N9  = mkCard "9";
+
 
      oper ss : Str -> { s : Str } = \ s -> { s = s };
 

@@ -1,10 +1,10 @@
-Testsuite: testsuites/flights_de.txt
-Created:   2016-02-07
+Testsuite: benchmarks/flights_de.txt
+Created:   2016-02-09
 
 
 * Ich möchte am Mittwoch nach München fliegen.
 
-    {"date"=>["2016-02-10", "2016-02-10"], "destination"=>"MUC"}
+    {"date"=>["2016-02-14", "2016-02-14"], "destination"=>"MUC"}
 
 * Ich möchte einen Flug von Düsseldorf nach Mailand buchen.
 
@@ -22,14 +22,18 @@ Created:   2016-02-07
 
 * Ich möchte nächste Woche in New York shoppen.
 
+    {"activity"=>"shopping", "date"=>["2016-02-15", "2016-02-22"], "destination"=>"JFK"}
+    {"activity"=>"shopping", "date"=>["2016-02-15", "2016-02-22"], "destination"=>"LGA"}
 
 * Ich möchte am Donnerstag nach Mailand fliegen.
 
-    {"date"=>["2016-02-09", "2016-02-09"], "destination"=>"LIN"}
-    {"date"=>["2016-02-09", "2016-02-09"], "destination"=>"MXP"}
+    {"date"=>["2016-02-13", "2016-02-13"], "destination"=>"LIN"}
+    {"date"=>["2016-02-13", "2016-02-13"], "destination"=>"MXP"}
 
 * Ich möchte am 11. Dezember nach New York fliegen.
 
+    {"date"=>["2016-12-11", "2016-12-11"], "destination"=>"JFK"}
+    {"date"=>["2016-12-11", "2016-12-11"], "destination"=>"LGA"}
 
 * Ich möchte an Ostern nach Rom fliegen.
 
@@ -41,6 +45,10 @@ Created:   2016-02-07
 
 * Ich möchte in drei Tagen nach Rom fliegen.
 
+    {"date"=>["2016-02-06", "2016-02-06"], "destination"=>"CIA"}
+    {"date"=>["2016-02-06", "2016-02-06"], "destination"=>"FCO"}
+    {"date"=>["2016-02-12", "2016-02-12"], "destination"=>"CIA"}
+    {"date"=>["2016-02-12", "2016-02-12"], "destination"=>"FCO"}
 
 * Ich muss in drei Tagen nach Rom.
 
@@ -68,26 +76,27 @@ Created:   2016-02-07
 
 * am 11. Februar
 
+    {"date"=>["2016-02-11", "2016-02-11"]}
 
 * heute
 
-    {"date"=>["2016-02-07", "2016-02-07"]}
+    {"date"=>["2016-02-09", "2016-02-09"]}
 
 * morgen
 
-    {"date"=>["2016-02-08", "2016-02-08"]}
+    {"date"=>["2016-02-10", "2016-02-10"]}
 
 * übermorgen
 
-    {"date"=>["2016-02-09", "2016-02-09"]}
+    {"date"=>["2016-02-11", "2016-02-11"]}
 
 * am Mittwoch
 
-    {"date"=>["2016-02-10", "2016-02-10"]}
+    {"date"=>["2016-02-14", "2016-02-14"]}
 
 * diesen Mittwoch
 
-    {"date"=>["2016-02-10", "2016-02-10"]}
+    {"date"=>["2016-02-14", "2016-02-14"]}
 
 * nächsten Mittwoch
 
@@ -98,7 +107,7 @@ Created:   2016-02-07
 
 * nächste Woche
 
-    {"date"=>["2016-02-08", "2016-02-14"]}
+    {"date"=>["2016-02-15", "2016-02-22"]}
 
 * am Wochenende
 
@@ -110,19 +119,25 @@ Created:   2016-02-07
 
 * in vier Tagen
 
+    {"date"=>["2016-02-05", "2016-02-05"]}
+    {"date"=>["2016-02-13", "2016-02-13"]}
 
 * in zwei Wochen
 
+    {"date"=>["2016-01-26", "2016-01-26"]}
+    {"date"=>["2016-02-23", "2016-02-23"]}
 
 * in einem Monat
 
+    {"date"=>["2016-02-09", "2016-02-09"]}
 
 * in zwei Monaten
 
+    {"date"=>["2016-02-09", "2016-02-09"]}
 
 * vor Ostern
 
-    {"date"=>["2016-02-07", "2016-03-24"]}
+    {"date"=>["2016-02-09", "2016-03-24"]}
 
 * nach Ostern
 
@@ -137,6 +152,7 @@ Created:   2016-02-07
 
 * vor Sonntag
 
+    {"date"=>["2016-02-09", "2016-02-11"]}
 
 * nächste Woche Donnerstag
 

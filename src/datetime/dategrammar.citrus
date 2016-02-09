@@ -118,33 +118,35 @@ grammar DateGrammar
     | ('shift' space date:date space op:operator space num:num space unit:unit) {
 
         d = capture(:date).value[:date]
+        n = capture(:num).value
         case capture(:unit)
         when 'Day'
           case capture(:op).to_s
-            when '+' then { :date => d + capture(:num).value }
-            when '-' then { :date => d - capture(:num).value }
+            when '+' then { :date => d + n }
+            when '-' then { :date => d - n }
           end
         when 'Week'
           case capture(:op).to_s
-            when '+' then { :date => d + 7*capture(:num).value }
-            when '-' then { :date => d - 7*capture(:num).value }
+            when '+' then { :date => d + 7*n }
+            when '-' then { :date => d - 7*n }
           end
         when 'Month'
-          expand = num.value > 1
-          case capture(:op).to_s
-          when '+'
-              if expand
-                { :date => Date.new(d.year,d.mon + num.value,1), :until => Date.new(d.year,d.mon + num.value,-1) }
-              else
-                { :date => Date.new(d.year,d.mon + num.value,d.day-3), :until => Date.new(d.year,d.mon + num.value,d.day+3) }
-              end
-          when '-'
-              if expand
-                { :date => Date.new(d.year,d.mon - num.value,1), :until => Date.new(d.year,d.mon - num.value,-1) }
-              else
-                { :date => Date.new(d.year,d.mon - num.value,d.day-3), :until => Date.new(d.year,d.mon - num.value,d.day+3) }
-              end
-          end
+          { :date => d } # TODO
+          # expand = n > 1
+          # case capture(:op).to_s
+          # when '+'
+          #     if expand
+          #       { :date => Date.new(d.year,d.mon + n,1), :until => Date.new(d.year,d.mon + n,-1) }
+          #     else
+          #       { :date => Date.new(d.year,d.mon + n,d.day-3), :until => Date.new(d.year,d.mon + n,d.day+3) }
+          #     end
+          # when '-'
+          #     if expand
+          #       { :date => Date.new(d.year,d.mon - n,1), :until => Date.new(d.year,d.mon - n,-1) }
+          #     else
+          #       { :date => Date.new(d.year,d.mon - n,d.day-3), :until => Date.new(d.year,d.mon - n,d.day+3) }
+          #     end
+          # end
         when 'Year'
           y = case capture(:op).to_s when '+' then d.year+1 when '-' then d.year-1 end
           { :date => Date.new(y,d.mon,1), :until => Date.new(y,d.mon,-1) }

@@ -3,6 +3,7 @@ concrete DateTimeGer of DateTime = CoreGer ** open SyntaxGer, ParadigmsGer, Symb
   lincat
 
      TemporalUnit = CN;
+     Number       = Card;
 
      Weekday      = CN;
 
@@ -23,6 +24,8 @@ concrete DateTimeGer of DateTime = CoreGer ** open SyntaxGer, ParadigmsGer, Symb
      Sunday    = mkCN (mkN "sonntag" "sonntag" "sonntag" "sonntag" "sonntag" "sonntag" masculine);
      Weekend   = mkCN (mkN "wochenende" "wochenenden" neuter);
 
+     weekday w = mkNP w;
+
      Christmas = mkNP (mkPN "weihnachten");
      Easter    = mkNP (mkPN "ostern");
 
@@ -32,8 +35,8 @@ concrete DateTimeGer of DateTime = CoreGer ** open SyntaxGer, ParadigmsGer, Symb
      Months    = mkCN (mkN "monat" "monate" masculine);
      Years     = mkCN (mkN "jahr" "jahre" neuter);
 
-     --plus  num unit = SyntaxGer.mkAdv in_Prep (mkNP (mkDet num) unit);
-     --minus num unit = SyntaxGer.mkAdv in_Prep (mkNP (mkDet num) unit);
+     plus  num unit = SyntaxGer.mkAdv in_Prep (mkNP (mkDet num) unit);
+     minus num unit = SyntaxGer.mkAdv in_Prep (mkNP (mkDet num) unit);
 
      next_unit unit = SyntaxGer.mkAdv accPrep (mkNP (mkCN (mkAP (mkA "nächste")) unit));
      this      day  = SyntaxGer.mkAdv accPrep (mkNP this_Det day);
@@ -43,7 +46,7 @@ concrete DateTimeGer of DateTime = CoreGer ** open SyntaxGer, ParadigmsGer, Symb
      on_date     d = SyntaxGer.mkAdv anDat_Prep d;
      around_date d = SyntaxGer.mkAdv (mkPrep "um" accusative) d;
      around_day  d = SyntaxGer.mkAdv (mkPrep "um" accusative) (mkNP d);
-     at_date     d = SyntaxGer.mkAdv (mkPrep "zu" dative) d | SyntaxGer.mkAdv (mkPrep "an" dative) d;
+     at_date     d = SyntaxGer.mkAdv (mkPrep "zu" dative) d | SyntaxGer.mkAdv (mkPrep "am" dative) d;
      before_date d = SyntaxGer.mkAdv (mkPrep "vor" accusative) d;
      after_date  d = SyntaxGer.mkAdv (mkPrep "nach" accusative) d;
 
@@ -103,6 +106,17 @@ concrete DateTimeGer of DateTime = CoreGer ** open SyntaxGer, ParadigmsGer, Symb
      Y2015 = ss "2015" | ss "15";
      Y2016 = ss "2016" | ss "16";
      Y2017 = ss "2017" | ss "17";
+
+     N1  = mkCard "1";
+     N2  = mkCard "2";
+     N3  = mkCard "3";
+     N4  = mkCard "4";
+     N5  = mkCard "5";
+     N6  = mkCard "6";
+     N7  = mkCard "7";
+     N8  = mkCard "8";
+     N9  = mkCard "9";
+
 
      oper ss : Str -> { s : Str } = \ s -> { s = s };
 

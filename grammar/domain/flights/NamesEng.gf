@@ -127,5 +127,6 @@ concrete NamesEng of Names = CoreEng ** open SyntaxEng, ParadigmsEng in {
      LEY = mkNP (mkPN ("lelystad"));
      MST = mkNP (mkPN ("maastricht" | "limburg"));
      RTM = mkNP (mkPN ("rotterdam"));
-
+     JFK = mkNP (mkPN ("new york" | "john f kennedy" | "jfk"));
+     LGA = mkNP (mkPN ("new york" | "la guardia"));
 }

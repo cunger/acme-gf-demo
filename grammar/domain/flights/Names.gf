@@ -127,5 +127,7 @@ abstract Names = Core ** {
      LEY : NounPhrase;
      MST : NounPhrase;
      RTM : NounPhrase;
-     
+     JFK : NounPhrase;
+     LGA : NounPhrase;
+
 }

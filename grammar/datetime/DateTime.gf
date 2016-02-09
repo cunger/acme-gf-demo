@@ -1,8 +1,9 @@
-abstract DateTime = Core ** open Numeral in {
+abstract DateTime = Core ** {
 
   cat
 
      TemporalUnit;
+     Number;
 
      Weekday;
 
@@ -14,13 +15,14 @@ abstract DateTime = Core ** open Numeral in {
   fun
 
      Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Weekend : Weekday;
+     weekday : Weekday -> DateTime;
 
      Christmas, Easter : DateTime;
 
      Hours, Days, Weeks, Months, Years : TemporalUnit;
 
-     --plus  : Numeral -> TemporalUnit -> Adverb;  -- in 3 hours/days/weeks/...
-     --minus : Numeral -> TemporalUnit -> Adverb;  -- 3 hours/weeks/... ago
+     plus  : Number -> TemporalUnit -> Adverb;  -- in 3 hours/days/weeks/...
+     minus : Number -> TemporalUnit -> Adverb;  -- 3 hours/weeks/... ago
 
      next_unit  : TemporalUnit -> Adverb;        -- next week
      this, next : Weekday      -> Adverb;        -- this/next wednesday
@@ -44,4 +46,6 @@ abstract DateTime = Core ** open Numeral in {
      M1, M2, M3, M4, M5, M6, M7, M8, M9, M10, M11, M12 : Month;
 
      Y2015, Y2016, Y2017 : Year;
+
+     N1, N2, N3, N4, N5, N6, N7, N8, N9 : Number;
 }
