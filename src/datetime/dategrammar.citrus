@@ -111,6 +111,7 @@ grammar DateGrammar
 
     # ~ today
 
+    # TODO more systematic (less hardcoded) treatment of vagueness
     | ('~' space d:date) { d = capture(:d).value[:date]; { :date => d - 3, :until => d + 3 } }
 
     # shift today + 1 Day
@@ -131,22 +132,14 @@ grammar DateGrammar
             when '-' then { :date => d - 7*n }
           end
         when 'Month'
-          { :date => d } # TODO
-          # expand = n > 1
-          # case capture(:op).to_s
-          # when '+'
-          #     if expand
-          #       { :date => Date.new(d.year,d.mon + n,1), :until => Date.new(d.year,d.mon + n,-1) }
-          #     else
-          #       { :date => Date.new(d.year,d.mon + n,d.day-3), :until => Date.new(d.year,d.mon + n,d.day+3) }
-          #     end
-          # when '-'
-          #     if expand
-          #       { :date => Date.new(d.year,d.mon - n,1), :until => Date.new(d.year,d.mon - n,-1) }
-          #     else
-          #       { :date => Date.new(d.year,d.mon - n,d.day-3), :until => Date.new(d.year,d.mon - n,d.day+3) }
-          #     end
-          # end
+
+          expand = n > 1
+          case capture(:op).to_s
+          when '+'
+              { :date => d.next_month(n) }
+          when '-'
+              { :date => d.prev_month(n) }
+          end
         when 'Year'
           y = case capture(:op).to_s when '+' then d.year+1 when '-' then d.year-1 end
           { :date => Date.new(y,d.mon,1), :until => Date.new(y,d.mon,-1) }
