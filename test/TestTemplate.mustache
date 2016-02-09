@@ -1,11 +1,22 @@
-Testsuite: {{file}}
-Created:   {{date}}
+<html>
+<body>
+<p>
+<b>Testsuite:</b> {{file}}
+<br />
+<b>Created:</b>   {{date}}
+</p>
 
+<p>
+<ul>
 {{#tests}}
-
-* {{input}}
+<li> <p>{{input}}</p>
 
   {{#interpretations}}
-    {{{.}}}
+    {{{.}}} <br />
   {{/interpretations}}
 {{/tests}}
+</ul>
+</p>
+
+</body>
+</html>

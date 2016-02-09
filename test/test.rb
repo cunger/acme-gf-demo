@@ -35,7 +35,7 @@ testsuites.each do |testsuite|
   end
 
   out_put  = Mustache.render(template,results)
-  out_file = testsuite.gsub('.txt','.md')
+  out_file = testsuite.gsub('.txt','.html')
 
   File.open(out_file,'w').write(out_put)
 end
