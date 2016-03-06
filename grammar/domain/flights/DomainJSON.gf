@@ -5,9 +5,9 @@ concrete DomainJSON of Domain = CoreJSON ** {
         flight  = null;
         airport = null;
 
-        cheap  = set "price"    (quotes "cheap");
-        early  = set "time"     (quotes "early");
-        late   = set "time"     (quotes "late");
+        cheap  = set "maxPrice" (quotes "cheap");
+        early  = set "permittedDepartureTime" (quotes "early");
+        late   = set "permittedDepartureTime" (quotes "late");
         direct = set "maxStops" (quotes "0");
 
         book   = null;
@@ -16,9 +16,9 @@ concrete DomainJSON of Domain = CoreJSON ** {
         fly    = null;
         shop   = set "activity" (quotes "shopping");
 
-        visit       np = set "destination" np.json; 
+        visit       np = set "destination" np.json;
 
-        source      np = set "source" np.json;
+        source      np = set "origin" np.json;
         destination np = set "destination" np.json;
         location    np = set "destination" np.json;
 
