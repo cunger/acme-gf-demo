@@ -29,8 +29,9 @@ testsuites.each do |testsuite|
     unless line.empty?
 
       interpretations = process(gfserver,line)
-
+      interpretations.map! { |i| i.to_s }
       results[:tests] << { :input => line, :interpretations => interpretations }
+
     end
   end
 
