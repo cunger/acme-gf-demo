@@ -1,3 +1,3 @@
 *.gfo
-*.log
+test/.gf.log
 .DS_Store

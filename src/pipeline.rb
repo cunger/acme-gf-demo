@@ -18,8 +18,16 @@ def process(gf, string)
 
       linearizations = gf.linearize(parse[:ast],'JSON')
       linearizations.each do |lin|
+
         json = JSON.parse(lin)
-        json["language"] = parse[:language]
+
+        case parse[:language]
+        when "ApplicationGer"
+             json["language"] = "de"
+        when "ApplicationEng"
+             json["language"] = "en"
+        end
+
         interpretations << json
       end
     end
