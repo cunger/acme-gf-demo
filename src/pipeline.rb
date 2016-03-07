@@ -17,7 +17,11 @@ def process(gf, string)
     parses.each do |parse|
 
       linearizations = gf.linearize(parse[:ast],'JSON')
-      linearizations.each { |lin| interpretations << JSON.parse(lin) }
+      linearizations.each do |lin|
+        json = JSON.parse(lin)
+        json["language"] = parse[:language]
+        interpretations << json
+      end
     end
 
     # Postprocessing
