@@ -81,6 +81,7 @@ def postprocess(json)
        when "cheap"
             json["maxPrice"] = "EUR100"
        end
+    end
 
     return json
 end
