@@ -12,7 +12,7 @@ concrete DomainEng of Domain = CoreEng ** open SyntaxEng, ParadigmsEng, IrregEng
 
         book    = mkV2 (mkV "book");
 
-        travel  = mkV "travel";
+        travel  = variants { mkV "travel"; go_V };
         fly     = mkV "fly";
         shop    = (mkV "shop") | (partV go_V "shopping");
 
