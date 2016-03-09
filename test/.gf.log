@@ -1,6 +1,1 @@
-Tgf: bind: resource busy (Address already in use)
-his is GF version 3.7.1-darcs.
-No detailed version info available
-Built on linux/x86_64 with ghc-7.6, flags: interrupt server
-Document root = /home/ubuntu/.cabal/share/gf-3.7.1/www
-Starting HTTP server, open http://localhost:41296/ in your web browser.
+sh: /Users/cunger/.cabal/bin/gf: No such file or directory

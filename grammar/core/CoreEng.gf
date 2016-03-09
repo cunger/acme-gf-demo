@@ -11,7 +11,7 @@ concrete CoreEng of Core = CoreI with (Syntax = SyntaxEng) ** open ConjunctionEn
 
        please = { s = "please" };
        gerne  = variants {};
-       askFor = { s = "i want" | "i'd like" | "i want to" | "i'd like to" | "may i have" | "give me" | "show me" | "are there" | "do you have" };
+       askFor = { s = "i want" | "i'd like" | "i want to" | "i'd like to" | "i need" | "i need to" | "may i have" | "give me" | "show me" | "are there" | "do you have" };
 
        Greeting = variants { ss "hi";
                              ss "hello";
@@ -35,5 +35,5 @@ concrete CoreEng of Core = CoreI with (Syntax = SyntaxEng) ** open ConjunctionEn
                            } ;
 
         Farewell = variants { ss "bye" };
-        
+
 }
