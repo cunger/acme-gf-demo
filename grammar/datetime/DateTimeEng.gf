@@ -27,6 +27,7 @@ concrete DateTimeEng of DateTime = CoreEng ** open SyntaxEng, ParadigmsEng, Symb
 
      Christmas = mkNP (mkPN "christmas") | mkNP (mkPN "xmas");
      Easter    = mkNP (mkPN "easter");
+     Pentecost = mkNP (mkPN "pentecost");
 
      Hours     = mkCN (mkN "hour");
      Days      = mkCN (mkN "day");

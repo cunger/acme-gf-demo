@@ -3,7 +3,7 @@ concrete NamesGer of Names = CoreGer ** open SyntaxGer, ParadigmsGer in {
   lin
 
      {{#airports}}
-     {{iata}} = mkNP (mkPN ("{{airport}}" | "{{city}}"));
+     {{iata}} = mkNP (mkPN "{{{airport}}}") | mkNP (mkPN "{{{city}}}") ;
      {{/airports}}
 
 }

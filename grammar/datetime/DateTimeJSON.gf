@@ -14,25 +14,26 @@ lincat
 
   lin
 
-     Monday    = "Monday";
-     Tuesday   = "Tuesday";
-     Wednesday = "Wednesday";
-     Thursday  = "Thursday";
-     Friday    = "Friday";
-     Saturday  = "Saturday";
-     Sunday    = "Sunday";
-     Weekend   = "Weekend";
+     Monday    = "monday";
+     Tuesday   = "tuesday";
+     Wednesday = "wednesday";
+     Thursday  = "thursday";
+     Friday    = "friday";
+     Saturday  = "saturday";
+     Sunday    = "sunday";
+     Weekend   = "weekend";
 
      weekday w = w;
 
      Christmas = "year-12-24";
-     Easter    = "Easter";
+     Easter    = "easter";
+     Pentecost = "pentecost";
 
-     Hours     = "Hour";
-     Days      = "Day";
-     Weeks     = "Week";
-     Months    = "Month";
-     Years     = "Year";
+     Hours     = "hour";
+     Days      = "day";
+     Weeks     = "week";
+     Months    = "month";
+     Years     = "year";
 
      plus  num unit = set "date" (quotes ("shift today +" ++ num ++ unit));
      minus num unit = set "date" (quotes ("shift today -" ++ num ++ unit));

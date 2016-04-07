@@ -17,7 +17,7 @@ abstract DateTime = Core ** {
      Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Weekend : Weekday;
      weekday : Weekday -> DateTime;
 
-     Christmas, Easter : DateTime;
+     Christmas, Easter, Pentecost : DateTime;
 
      Hours, Days, Weeks, Months, Years : TemporalUnit;
 

@@ -28,6 +28,7 @@ concrete DateTimeGer of DateTime = CoreGer ** open SyntaxGer, ParadigmsGer, Symb
 
      Christmas = mkNP (mkPN "weihnachten");
      Easter    = mkNP (mkPN "ostern");
+     Pentecost = mkNP (mkPN "pfingsten");
 
      Hours     = mkCN (mkN "stunde" "stunden" feminine);
      Days      = mkCN (mkN "tag" "tage" masculine);
