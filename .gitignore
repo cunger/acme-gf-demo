@@ -1,3 +1,4 @@
 *.gfo
 */.gf.log
+*/Application.pgf
 .DS_Store
