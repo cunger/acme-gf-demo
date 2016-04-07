@@ -146,7 +146,7 @@ grammar DateGrammar
         end
     }
 
-    # this(Week)
+    # this(week)
 
     | ('this' space '(' space unit:unit space ')') {
 
@@ -163,7 +163,7 @@ grammar DateGrammar
           end
     }
 
-    # next(Week)
+    # next(week)
 
     | ('next' space '(' space unit:unit space ')') {
 
@@ -183,31 +183,31 @@ grammar DateGrammar
           end
     }
 
-    # this(Friday)
+    # this(friday)
 
     | ('this' space '(' space w:weekday space ')') { capture(:w).value }
 
-    # next(Friday)
+    # next(friday)
 
     | ('next' space '(' space w:weekday space ')') {
       t = Date.today
       w = case capture(:w).to_s
-            when 'Sunday'    then 0
-            when 'Monday'    then 1
-            when 'Tuesday'   then 2
-            when 'Wednesday' then 3
-            when 'Thursday'  then 4
-            when 'Friday'    then 5
-            when 'Saturday'  then 6
+            when 'sunday'    then 0
+            when 'monday'    then 1
+            when 'tuesday'   then 2
+            when 'wednesday' then 3
+            when 'thursday'  then 4
+            when 'friday'    then 5
+            when 'saturday'  then 6
           end
       { :date => t + ((8-t.wday)+w) }
     }
 
-    # this(Weekend)
+    # this(weekend)
 
     | ('this' space '(' space w:weekend space ')') { capture(:w).value }
 
-    # next(Weekend)
+    # next(weekend)
 
     | ('next' space '(' space w:weekend space ')') {
       d = capture(:w).value
