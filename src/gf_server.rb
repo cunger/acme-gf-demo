@@ -92,7 +92,7 @@ class GFServer
 
          results.each do |result|
            if result.has_key? "tree"
-              randoms << linearize(result["tree"],language)
+              randoms = linearize(result["tree"],language)
            end
          end
        end
