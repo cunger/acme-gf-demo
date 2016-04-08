@@ -27,3 +27,17 @@ end
 get "/test/:language" do |language|
   File.open("../test/benchmarks/flights_"+language+".html","r").read
 end
+
+get "/random/:language" do |language|
+  say = gf.generate_random(language)
+
+  if say.nil?
+     case language
+     when "en" ; say = "i don't know what to say..."
+     when "de" ; say = "ich weiß nicht, was ich sagen soll..."
+     else say = "hello world!"
+     end
+  end
+
+  say
+end

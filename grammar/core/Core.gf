@@ -14,8 +14,6 @@ abstract Core = {
      Verb2;
      VerbPhrase;
 
-     Prefix;
-     PreSuffix;
      DialogAct;
 
   fun
@@ -45,15 +43,13 @@ abstract Core = {
      promptAdjective  : Adjective  -> DialogAct;
      promptVerbPhrase : VerbPhrase -> DialogAct;
 
-     -- prefixes etc.
+     -- prompts etc.
 
-     prefix    : Prefix    -> DialogAct -> DialogAct;
-     presuffix : PreSuffix -> DialogAct -> DialogAct;
+     please : DialogAct -> DialogAct;
 
-     askFor : Prefix;
+     iwant_NP : NounPhrase -> DialogAct;
+     iwant_VP : VerbPhrase -> DialogAct;
 
-     please : PreSuffix;
-     gerne  : PreSuffix;
 
      -- fixed dialog acts
 

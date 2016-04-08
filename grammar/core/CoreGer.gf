@@ -7,12 +7,13 @@ concrete CoreGer of Core = CoreI with (Syntax = SyntaxGer) ** open ParadigmsGer,
 
        -- language-specific dialog stuff
 
-       promptNounPhrase np = variants { ss np.s; 
+       promptNounPhrase np = variants { ss np.s;
                                         ss (SyntaxGer.mkAdv accPrep np).s };
 
-       please = { s = "bitte" };
-       gerne  = { s = "gerne" | "gern" };
-       askFor = { s = "ich will" | "ich möchte" | "ich hätte gerne" | "ich hätte gern" | "ich brauche" | "ich muss" | "hast du" | "gibt es" };
+       please d = ss ("bitte" ++ d.s) | ss (d.s ++ "bitte");
+
+       iwant_NP np = ss (("ich will" | "ich möchte" | "ich hätte gerne" | "ich hätte gern" | "ich brauche" | "ich muss" | "hast du" | "gibt es") ++ (SyntaxGer.mkAdv accPrep np).s);
+       iwant_VP vp = ss (("ich will" | "ich möchte" | "ich muss" | "kann ich" | "kannst du") ++ (mkUtt vp).s);
 
        Greeting = variants { ss "hi";
                              ss "hallo";
@@ -33,6 +34,7 @@ concrete CoreGer of Core = CoreI with (Syntax = SyntaxGer) ** open ParadigmsGer,
                             ss "nö"
                            } ;
 
-        Farewell = variants { ss "lg" };
+        Farewell = variants { ss "tschüss";
+                              ss "lg" };
 
 }

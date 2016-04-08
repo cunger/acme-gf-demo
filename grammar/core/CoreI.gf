@@ -14,8 +14,6 @@ incomplete concrete CoreI of Core = open Syntax, Prelude in {
      Verb2 = V2;
      VerbPhrase = VP;
 
-     Prefix    = { s : Str };
-     PreSuffix = { s : Str };
      DialogAct = { s : Str };
 
   lin
@@ -36,8 +34,5 @@ incomplete concrete CoreI of Core = open Syntax, Prelude in {
      promptAdverb     adv  = ss (mkUtt adv).s;
      promptAdjective  ap   = ss (mkUtt ap).s;
      promptVerbPhrase vp   = ss (mkUtt vp).s;
-
-     prefix    p act = ss (p.s ++ act.s);
-     presuffix p act = ss (p.s ++ act.s) | ss (act.s ++ p.s);
 
 }

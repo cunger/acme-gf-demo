@@ -14,8 +14,6 @@ concrete CoreJSON of Core = open Prelude in {
      Verb2 = JSON;
      VerbPhrase = JSON;
 
-     Prefix    = JSON;
-     PreSuffix = JSON;
      DialogAct = Str;
 
   lin
@@ -38,12 +36,9 @@ concrete CoreJSON of Core = open Prelude in {
      promptAdjective  ap  = top ap;
      promptVerbPhrase vp  = top vp;
 
-     prefix    _ act = act;
-     presuffix _ act = act;
-
-     askFor = null;
-     please = null;
-     gerne  = null;
+     please d = d;
+     iwant_NP np = top np;
+     iwant_VP vp = top vp;
 
      Greeting = top (set "dialogact" (quotes "greet"));
      Ack      = top (set "dialogact" (quotes "ack"));

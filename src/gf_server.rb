@@ -77,5 +77,27 @@ class GFServer
       return linearizations
   end
 
+  def generate_random(language)
+
+      params = { :command => "random" }
+
+      @uri.query = URI.encode_www_form(params)
+      response   = Net::HTTP.get_response(uri)
+
+      randoms = []
+
+      if response.is_a?(Net::HTTPSuccess)
+
+         results = JSON.parse(response.body)
+
+         results.each do |result|
+           if result.has_key? "tree"
+              randoms << linearize(result["tree"],language)
+           end
+         end
+       end
+
+       return randoms.max_by(&:length)
+    end
 
 end
