@@ -7,8 +7,14 @@ concrete CoreGer of Core = CoreI with (Syntax = SyntaxGer) ** open ParadigmsGer,
 
        -- language-specific dialog stuff
 
+       promptNoun       cn = variants { ss (mkNP cn).s;
+                                        ss (SyntaxGer.mkAdv accPrep (mkNP cn)).s };
+
        promptNounPhrase np = variants { ss np.s;
                                         ss (SyntaxGer.mkAdv accPrep np).s };
+
+       promptVerbPhrase vp = (mkUtt vp).s; 
+
 
        please d = ss ("bitte" ++ d.s) | ss (d.s ++ "bitte");
 

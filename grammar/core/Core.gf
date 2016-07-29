@@ -38,6 +38,7 @@ abstract Core = {
 
      -- prompts
 
+     promptNoun       : Noun       -> DialogAct;
      promptNounPhrase : NounPhrase -> DialogAct;
      promptAdverb     : Adverb     -> DialogAct;
      promptAdjective  : Adjective  -> DialogAct;

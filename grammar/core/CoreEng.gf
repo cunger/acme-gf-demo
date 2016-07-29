@@ -7,11 +7,13 @@ concrete CoreEng of Core = CoreI with (Syntax = SyntaxEng) ** open ConjunctionEn
 
        -- language-specific dialog stuff
 
+       promptNoun       cn = ss ((mkNP cn).s ! NPC Acc);
        promptNounPhrase np = ss (np.s ! NPC Acc);
 
-       --promptAdverb     adv =
-       --promptAdjective  : Adjective  -> DialogAct;
-       -- promptVerbPhrase vp ;
+       --promptAdverb     adv = ... ;
+       --promptAdjective  adj = ... ;
+       
+       promptVerbPhrase vp = (mkUtt vp).s;
 
        please d = ss ("please" ++ d.s) | ss (d.s ++ "please");
 
