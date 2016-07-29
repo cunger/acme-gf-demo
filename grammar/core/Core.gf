@@ -33,12 +33,12 @@ abstract Core = {
 
      -- determiners
 
-     some : Noun -> NounPhrase;
-     all  : Noun -> NounPhrase;
+     some    : Noun -> NounPhrase;
+     all     : Noun -> NounPhrase;
+     generic : Noun -> NounPhrase;
 
      -- prompts
 
-     promptNoun       : Noun       -> DialogAct;
      promptNounPhrase : NounPhrase -> DialogAct;
      promptAdverb     : Adverb     -> DialogAct;
      promptAdjective  : Adjective  -> DialogAct;

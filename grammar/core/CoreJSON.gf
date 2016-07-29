@@ -28,10 +28,10 @@ concrete CoreJSON of Core = open Prelude in {
      modAdjCN adj cn = merge adj cn;
      modCNAdv cn adv = merge cn adv;
 
-     some cn = cn;
-     all  cn = cn;
+     some    cn = cn;
+     all     cn = cn;
+     generic cn = cn;
 
-     promptNoun       cn  = top cn;
      promptNounPhrase np  = top np;
      promptAdverb     adv = top adv;
      promptAdjective  ap  = top ap;

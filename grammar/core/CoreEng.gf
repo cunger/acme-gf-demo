@@ -7,13 +7,16 @@ concrete CoreEng of Core = CoreI with (Syntax = SyntaxEng) ** open (R = ResEng),
 
        -- language-specific dialog stuff
 
-       promptNoun       cn = ss ((mkNP cn).s ! R.npNom);
        promptNounPhrase np = ss (np.s ! R.npNom);
 
        --promptAdverb     adv = ... ;
        --promptAdjective  adj = ... ;
        
        promptVerbPhrase vp = (mkUtt vp).s;
+
+       some    cn = mkNP aSgl_Det cn;
+       all     cn = variants { mkNP every_Det cn; mkNP all_Predet (mkNP aPl_Det cn) };
+       generic cn = mkNP aPl_Det cn;
 
        please d = ss ("please" ++ d.s) | ss (d.s ++ "please");
 
