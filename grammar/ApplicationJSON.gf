@@ -7,4 +7,6 @@ concrete ApplicationJSON of Application =
 
    , DomainJSON
    , NamesJSON
+   , DialogJSON
+
    ;
