@@ -5,7 +5,7 @@ Service for grammar-based interpretation, available via GET request to `http://5
 
 *  `Ich will heute nach Amsterdam fliegen`
 
-  [http://52.29.222.38/parse/Ich%20will%20heute%20nach%20Rom%20fliegen](http://52.29.222.38/parse/Ich%20will%20heute%20nach%20Amsterdam%20fliegen)
+  [http://52.29.222.38/parse/Ich%20will%20heute%20nach%20Amsterdam%20fliegen](http://52.29.222.38/parse/Ich%20will%20heute%20nach%20Amsterdam%20fliegen)
 
 * `I want to fly to Amsterdam today`
 

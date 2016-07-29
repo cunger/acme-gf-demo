@@ -31,6 +31,7 @@ concrete CoreJSON of Core = open Prelude in {
      some cn = cn;
      all  cn = cn;
 
+     promptNoun       cn  = top cn;
      promptNounPhrase np  = top np;
      promptAdverb     adv = top adv;
      promptAdjective  ap  = top ap;

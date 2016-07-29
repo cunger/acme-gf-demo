@@ -1,4 +1,4 @@
-concrete CoreEng of Core = CoreI with (Syntax = SyntaxEng) ** open ConjunctionEng in {
+concrete CoreEng of Core = CoreI with (Syntax = SyntaxEng) ** open (R = ResEng), ConjunctionEng in {
 
    lin
 
@@ -7,8 +7,8 @@ concrete CoreEng of Core = CoreI with (Syntax = SyntaxEng) ** open ConjunctionEn
 
        -- language-specific dialog stuff
 
-       promptNoun       cn = ss ((mkNP cn).s ! NPC Acc);
-       promptNounPhrase np = ss (np.s ! NPC Acc);
+       promptNoun       cn = ss ((mkNP cn).s ! R.npNom);
+       promptNounPhrase np = ss (np.s ! R.npNom);
 
        --promptAdverb     adv = ... ;
        --promptAdjective  adj = ... ;
