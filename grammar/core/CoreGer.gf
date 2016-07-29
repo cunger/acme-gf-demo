@@ -12,9 +12,6 @@ concrete CoreGer of Core = CoreI with (Syntax = SyntaxGer) ** open ParadigmsGer,
 
        please d = ss ("bitte" ++ d.s) | ss (d.s ++ "bitte");
 
-       iwant_NP np = ss (("ich will" | "ich möchte" | "ich hätte gerne" | "ich hätte gern" | "ich brauche" | "ich muss" | "hast du" | "gibt es") ++ (SyntaxGer.mkAdv accPrep np).s);
-       iwant_VP vp = ss (("ich will" | "ich möchte" | "ich muss" | "kann ich" | "kannst du") ++ (mkUtt vp).s);
-
        Greeting = variants { ss "hi";
                              ss "hallo";
                              ss "hey";

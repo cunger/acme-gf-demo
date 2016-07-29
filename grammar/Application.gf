@@ -7,6 +7,7 @@ abstract Application =
 
    , Domain
    , Names
+   , Dialog
 
   ** {
   flags startcat=DialogAct ;

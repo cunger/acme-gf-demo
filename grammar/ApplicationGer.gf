@@ -7,4 +7,6 @@ concrete ApplicationGer of Application =
 
    , DomainGer
    , NamesGer
+   , DialogGer
+   
    ;

@@ -37,8 +37,6 @@ concrete CoreJSON of Core = open Prelude in {
      promptVerbPhrase vp  = top vp;
 
      please d = d;
-     iwant_NP np = top np;
-     iwant_VP vp = top vp;
 
      Greeting = top (set "dialogact" (quotes "greet"));
      Ack      = top (set "dialogact" (quotes "ack"));

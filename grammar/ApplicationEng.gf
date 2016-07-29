@@ -7,4 +7,6 @@ concrete ApplicationEng of Application =
 
    , DomainEng
    , NamesEng
+   , DialogEng
+   
    ;

@@ -7,12 +7,13 @@ concrete CoreEng of Core = CoreI with (Syntax = SyntaxEng) ** open ConjunctionEn
 
        -- language-specific dialog stuff
 
-       -- promptNounPhrase np = ss (np.s ! NPC Acc);
+       promptNounPhrase np = ss (np.s ! NPC Acc);
+
+       --promptAdverb     adv =
+       --promptAdjective  : Adjective  -> DialogAct;
+       -- promptVerbPhrase vp ;
 
        please d = ss ("please" ++ d.s) | ss (d.s ++ "please");
-
-       -- iwant_NP np = ss (("i want" | "i'd like" | "i need" | "i need to" | "may i have" | "give me" | "show me" | "are there" | "do you have" ) ++ (np.s ! NPC Acc));
-       iwant_VP vp = ss (("i want to" | "i'd like to" | "i need to" | "may i" | "can you" ) ++ (mkUtt vp).s) ;
 
        Greeting = variants { ss "hi";
                              ss "hello";

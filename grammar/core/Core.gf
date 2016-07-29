@@ -36,22 +36,16 @@ abstract Core = {
      some : Noun -> NounPhrase;
      all  : Noun -> NounPhrase;
 
-     -- lift to DialogAct
+     -- prompts
 
      promptNounPhrase : NounPhrase -> DialogAct;
      promptAdverb     : Adverb     -> DialogAct;
      promptAdjective  : Adjective  -> DialogAct;
      promptVerbPhrase : VerbPhrase -> DialogAct;
 
-     -- prompts etc.
-
      please : DialogAct -> DialogAct;
 
-     iwant_NP : NounPhrase -> DialogAct;
-     iwant_VP : VerbPhrase -> DialogAct;
-
-
-     -- fixed dialog acts
+     -- general dialog acts
 
      Greeting, Farewell, Thanks, Ack, NotAck : DialogAct;
 
